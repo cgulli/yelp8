@@ -69,8 +69,9 @@ feature 'restaurants' do
       click_link 'Add a restaurant'
       fill_in 'Name', with: "DQ"
       click_button 'Create Restaurant'
-      expect(page).not_to have_css 'h2', with: 'DQ'
+      expect(page).not_to have_css 'h2', text: 'DQ'
       expect(page).to have_content 'Error'
     end
   end
+
  end
