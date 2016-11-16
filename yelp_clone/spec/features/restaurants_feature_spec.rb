@@ -62,4 +62,15 @@ feature 'restaurants' do
       expect(page).to have_content 'Restaurant deleted successfully'
     end
   end
+  context "restaurant validations" do
+
+    scenario "it only accepts names over 2 characters" do
+      visit '/restaurants'
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: "DQ"
+      click_button 'Create Restaurant'
+      expect(page).not_to have_css 'h2', with: 'DQ'
+      expect(page).to have_content 'Error'
+    end
+  end
  end
